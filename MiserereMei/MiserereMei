@@ -1,0 +1,45 @@
+\version "2.14.2"
+
+\header {
+  title = "Miserere Mei, Deus"
+  composer = "Gregorio Allegri"
+  copyright = "&copyright; Copyright 2006 Dorsey Brothers Music Limited.  All Rights Reserved.  International Copyright Secured."
+}
+
+global = {
+  \key bes \major
+  \time 4/4
+  \tempo "Slowly and solemnly"
+}
+
+right = \relative c'' {
+  \global
+  % Music follows here.
+  
+}
+
+left = \relative c' {
+  \global
+  % Music follows here.
+  
+}
+
+\score {
+  \new PianoStaff \with {
+    instrumentName = "Piano"
+  } <<
+    \new Staff = "right" \with {
+      midiInstrument = "acoustic grand"
+    } \right
+    \new Staff = "left" \with {
+      midiInstrument = "acoustic grand"
+    } { \clef bass \left }
+  >>
+  \layout { }
+  \midi {
+    \context {
+      \Score
+      tempoWholesPerMinute = #(ly:make-moment 72 4)
+    }
+  }
+}
